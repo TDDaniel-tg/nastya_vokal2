@@ -39,21 +39,38 @@ function initializeScrollIndicator() {
 // Mobile Menu Toggle
 function initializeMobileMenu() {
     const burger = document.querySelector('.nav__burger');
-    const navLinks = document.querySelector('.nav__links');
+    const mobileMenu = document.querySelector('.nav__mobile-menu');
     
-    if (burger && navLinks) {
+    if (burger && mobileMenu) {
         burger.addEventListener('click', () => {
             burger.classList.toggle('active');
-            navLinks.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            
+            // Prevent body scroll when menu is open
+            if (mobileMenu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
         });
         
         // Close menu when clicking on links
-        const links = navLinks.querySelectorAll('.nav__link');
-        links.forEach(link => {
+        const mobileLinks = mobileMenu.querySelectorAll('.nav__link');
+        mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
                 burger.classList.remove('active');
-                navLinks.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
             });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!burger.contains(e.target) && !mobileMenu.contains(e.target)) {
+                burger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
         });
     }
 }

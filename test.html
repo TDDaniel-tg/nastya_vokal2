@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест голоса - Узнайте своё голосовое животное</title>
+    <meta name="description" content="Пройдите интерактивный тест голоса и узнайте, какое животное отражает ваш тип голоса. Получите профессиональный разбор от педагогов школы Анастасии Порток.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/test.css">
+    <link rel="stylesheet" href="css/animations.css">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body class="test-page">
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="container">
+                <div class="nav__content">
+                    <div class="nav__logo">
+                        <span class="logo-text">Анастасия Порток</span>
+                        <span class="logo-subtitle">Школа вокала</span>
+                    </div>
+                    <div class="nav__links">
+                        <a href="index.html" class="nav__link">Главная</a>
+                        <a href="index.html#program" class="nav__link">Программа</a>
+                        <a href="index.html#pricing" class="nav__link">Тарифы</a>
+                        <a href="index.html#results" class="nav__link">Результаты</a>
+                    </div>
+                    <div class="nav__burger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Block 1: Hero with Offer -->
+    <section class="test-hero" id="hero">
+        <div class="test-hero__background">
+            <div class="sound-waves-animated"></div>
+        </div>
+        <div class="container">
+            <div class="test-hero__content" data-aos="fade-up" data-aos-duration="1000">
+                <h1 class="test-hero__title">
+                    Протестируй свой голос... и узнай, как он <span class="highlight">выглядит!</span>
+                </h1>
+                <p class="test-hero__subtitle">
+                    Пройди 2-минутный тест и получи уникальную визуализацию своего голоса в виде животного + 
+                    профессиональный разбор от педагогов школы Анастасии Порток
+                </p>
+                <button class="btn btn--primary btn--large btn--pulse" onclick="startTest()">
+                    Начать тест
+                </button>
+            </div>
+            
+            <div class="test-hero__animals" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+                <div class="animal-icon animal-icon--lion">🦁</div>
+                <div class="animal-icon animal-icon--owl">🦉</div>
+                <div class="animal-icon animal-icon--dolphin">🐬</div>
+                <div class="animal-icon animal-icon--eagle">🦅</div>
+                <div class="animal-icon animal-icon--cat">🐱</div>
+                <div class="animal-icon animal-icon--hummingbird">🐦</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Block 2: How it Works -->
+    <section class="how-it-works" id="how">
+        <div class="container">
+            <div class="section__header" data-aos="fade-up">
+                <h2 class="section__title">Как это работает</h2>
+            </div>
+            
+            <div class="steps">
+                <div class="step" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="0">
+                    <div class="step__icon">
+                        <div class="step__number">1</div>
+                    </div>
+                    <div class="step__content">
+                        <h3 class="step__title">Ответь на 3 вопроса</h3>
+                        <p class="step__description">о своих целях и особенностях голоса</p>
+                    </div>
+                </div>
+                
+                <div class="step-arrow" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200">→</div>
+                
+                <div class="step" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+                    <div class="step__icon">
+                        <div class="step__number">2</div>
+                    </div>
+                    <div class="step__content">
+                        <h3 class="step__title">Запиши голосовое</h3>
+                        <p class="step__description">по нашему упражнению (15 секунд)</p>
+                    </div>
+                </div>
+                
+                <div class="step-arrow" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="500">→</div>
+                
+                <div class="step" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
+                    <div class="step__icon">
+                        <div class="step__number">3</div>
+                    </div>
+                    <div class="step__content">
+                        <h3 class="step__title">Получи результат</h3>
+                        <p class="step__description">визуализация + разбор от экспертов</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="counter" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="800">
+                <div class="counter__text">Уже <span class="counter__number">1500+</span> человек узнали своё голосовое животное</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Block 3: Interactive Test -->
+    <section class="test-section" id="test">
+        <div class="container">
+            <!-- Test Container -->
+            <div class="test-container" id="testContainer">
+                
+                <!-- Welcome Screen -->
+                <div class="test-screen test-screen--welcome active" id="welcomeScreen">
+                    <div class="test-content" data-aos="fade-up">
+                        <h2 class="test-title animated-text">Готовы узнать тайны своего голоса?</h2>
+                        <div class="test-input-group">
+                            <input type="text" id="userName" placeholder="Введите ваше имя" class="test-input">
+                            <button class="btn btn--primary" onclick="startTestFlow()">Начать</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 1 -->
+                <div class="test-screen test-screen--question" id="question1Screen">
+                    <div class="test-content">
+                        <div class="test-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 25%"></div>
+                            </div>
+                            <span class="progress-text">1 из 3</span>
+                        </div>
+                        
+                        <h2 class="test-title">Для чего вы хотите улучшить свой голос?</h2>
+                        
+                        <div class="test-options">
+                            <label class="option-card" onclick="selectOption('q1', 'speaking')">
+                                <input type="radio" name="q1" value="speaking">
+                                <div class="option-content">
+                                    <div class="option-icon">🎤</div>
+                                    <div class="option-text">Для публичных выступлений</div>
+                                </div>
+                            </label>
+                            
+                            <label class="option-card" onclick="selectOption('q1', 'singing')">
+                                <input type="radio" name="q1" value="singing">
+                                <div class="option-content">
+                                    <div class="option-icon">🎵</div>
+                                    <div class="option-text">Для пения и творчества</div>
+                                </div>
+                            </label>
+                            
+                            <label class="option-card" onclick="selectOption('q1', 'confidence')">
+                                <input type="radio" name="q1" value="confidence">
+                                <div class="option-content">
+                                    <div class="option-icon">💪</div>
+                                    <div class="option-text">Для уверенности в общении</div>
+                                </div>
+                            </label>
+                            
+                            <label class="option-card" onclick="selectOption('q1', 'curious')">
+                                <input type="radio" name="q1" value="curious">
+                                <div class="option-content">
+                                    <div class="option-icon">🤔</div>
+                                    <div class="option-text">Просто интересно узнать</div>
+                                </div>
+                            </label>
+                        </div>
+                        
+                        <button class="btn btn--primary btn--disabled" id="q1Next" onclick="nextQuestion(2)" disabled>
+                            Далее
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="test-screen test-screen--question" id="question2Screen">
+                    <div class="test-content">
+                        <div class="test-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 50%"></div>
+                            </div>
+                            <span class="progress-text">2 из 3</span>
+                        </div>
+                        
+                        <h2 class="test-title">Что вас больше всего беспокоит в голосе?</h2>
+                        <p class="test-subtitle">Можно выбрать несколько вариантов</p>
+                        
+                        <div class="test-options test-options--multiple">
+                            <label class="option-card" onclick="toggleOption('q2', 'quiet')">
+                                <input type="checkbox" name="q2" value="quiet">
+                                <div class="option-content">
+                                    <div class="option-icon">🔇</div>
+                                    <div class="option-text">Тихий/неуверенный голос</div>
+                                </div>
+                            </label>
+                            
+                            <label class="option-card" onclick="toggleOption('q2', 'fatigue')">
+                                <input type="checkbox" name="q2" value="fatigue">
+                                <div class="option-content">
+                                    <div class="option-icon">😴</div>
+                                    <div class="option-text">Быстрая усталость при разговоре</div>
+                                </div>
+                            </label>
+                            
+                            <label class="option-card" onclick="toggleOption('q2', 'tension')">
+                                <input type="checkbox" name="q2" value="tension">
+                                <div class="option-content">
+                                    <div class="option-icon">😬</div>
+                                    <div class="option-text">Зажимы и напряжение</div>
+                                </div>
+                            </label>
+                            
+                            <label class="option-card" onclick="toggleOption('q2', 'monotone')">
+                                <input type="checkbox" name="q2" value="monotone">
+                                <div class="option-content">
+                                    <div class="option-icon">📉</div>
+                                    <div class="option-text">Монотонность речи</div>
+                                </div>
+                            </label>
+                        </div>
+                        
+                        <button class="btn btn--primary" id="q2Next" onclick="nextQuestion(3)">
+                            Далее
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="test-screen test-screen--question" id="question3Screen">
+                    <div class="test-content">
+                        <div class="test-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 75%"></div>
+                            </div>
+                            <span class="progress-text">3 из 3</span>
+                        </div>
+                        
+                        <h2 class="test-title">Как часто вы используете голос профессионально?</h2>
+                        
+                        <div class="slider-container">
+                            <div class="slider-labels">
+                                <span>Редко</span>
+                                <span>Постоянно</span>
+                            </div>
+                            <input type="range" id="frequencySlider" class="frequency-slider" min="0" max="100" value="50" oninput="updateSliderValue()">
+                            <div class="slider-value" id="sliderValue">50%</div>
+                            <div class="frequency-waves" id="frequencyWaves"></div>
+                        </div>
+                        
+                        <button class="btn btn--primary" onclick="nextQuestion(4)">
+                            Далее
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Voice Recording -->
+                <div class="test-screen test-screen--recording" id="recordingScreen">
+                    <div class="test-content">
+                        <div class="test-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 90%"></div>
+                            </div>
+                            <span class="progress-text">Запись голоса</span>
+                        </div>
+                        
+                        <h2 class="test-title">Прочитайте текст и запишите аудио</h2>
+                        
+                        <div class="recording-text">
+                            <p>"Шла Саша по шоссе и сосала сушку. Карл у Клары украл кораллы, а Клара у Карла украла кларнет. В четверг четвертого числа в четыре с четвертью часа лигурийский регулировщик регулировал в Лигурии."</p>
+                        </div>
+                        
+                        <div class="recording-controls">
+                            <button class="btn btn--record" id="recordBtn" onclick="toggleRecording()">
+                                <span class="record-icon">🎙️</span>
+                                <span class="record-text">Начать запись</span>
+                            </button>
+                            <div class="recording-timer" id="recordingTimer">00:00</div>
+                        </div>
+                        
+                        <div class="recording-visualizer" id="recordingVisualizer">
+                            <div class="wave-bars"></div>
+                        </div>
+                        
+                        <div class="recording-actions" id="recordingActions" style="display: none;">
+                            <button class="btn btn--secondary" onclick="reRecord()">Переписать</button>
+                            <button class="btn btn--primary" onclick="nextQuestion(5)">Продолжить</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Collection -->
+                <div class="test-screen test-screen--contacts" id="contactsScreen">
+                    <div class="test-content">
+                        <div class="test-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 95%"></div>
+                            </div>
+                            <span class="progress-text">Почти готово!</span>
+                        </div>
+                        
+                        <h2 class="test-title">Куда отправить результат?</h2>
+                        
+                        <form class="contact-form" id="contactForm">
+                            <div class="form-group">
+                                <input type="tel" id="contactPhone" name="phone" placeholder="Телефон *" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="contactEmail" name="email" placeholder="Email (опционально)">
+                            </div>
+                            <div class="form-group">
+                                <select id="contactMessenger" name="messenger" required>
+                                    <option value="">Выберите мессенджер</option>
+                                    <option value="whatsapp">WhatsApp</option>
+                                    <option value="telegram">Telegram</option>
+                                </select>
+                            </div>
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="agreement" required>
+                                    <span class="checkmark"></span>
+                                    Согласен на обработку персональных данных
+                                </label>
+                            </div>
+                            <button type="submit" class="btn btn--primary btn--full">
+                                Получить результат
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Result -->
+                <div class="test-screen test-screen--result" id="resultScreen">
+                    <div class="test-content">
+                        <div class="result-generation" id="resultGeneration">
+                            <div class="generation-animation">
+                                <div class="spinning-icon">🔮</div>
+                                <h2>Анализируем ваш голос...</h2>
+                                <div class="loading-bar">
+                                    <div class="loading-fill"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="result-display" id="resultDisplay" style="display: none;">
+                            <div class="result-card">
+                                <div class="result-animal" id="resultAnimal">
+                                    <div class="animal-avatar">🦁</div>
+                                    <h2 class="animal-name">Лев</h2>
+                                </div>
+                                
+                                <div class="result-description" id="resultDescription">
+                                    <h3>Ваш тип голоса: Лидерский</h3>
+                                    <p>У вас мощный, уверенный голос с природной командной интонацией. Люди инстинктивно прислушиваются к вашим словам и доверяют вашему мнению.</p>
+                                    
+                                    <div class="result-characteristics">
+                                        <div class="characteristic">
+                                            <span class="char-label">Сила:</span>
+                                            <span class="char-value">Высокая</span>
+                                        </div>
+                                        <div class="characteristic">
+                                            <span class="char-label">Тембр:</span>
+                                            <span class="char-value">Глубокий</span>
+                                        </div>
+                                        <div class="characteristic">
+                                            <span class="char-label">Влияние:</span>
+                                            <span class="char-value">Максимальное</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="result-message">
+                                <p><strong>Ваш голос проанализирован!</strong></p>
+                                <p>Детальный разбор от наших педагогов придёт в течение 24 часов</p>
+                            </div>
+                            
+                            <div class="result-actions">
+                                <button class="btn btn--secondary" onclick="shareResult()">
+                                    Поделиться результатом
+                                </button>
+                                <button class="btn btn--primary" onclick="redirectToMain()">
+                                    Записаться на пробное занятие
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Block 4: Example Visualizations -->
+    <section class="examples" id="examples">
+        <div class="container">
+            <div class="section__header" data-aos="fade-up">
+                <h2 class="section__title">Примеры голосовых животных</h2>
+            </div>
+            
+            <div class="animals-grid">
+                <div class="animal-example" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="0">
+                    <div class="animal-card">
+                        <div class="animal-emoji">🦁</div>
+                        <h3 class="animal-title">Лев</h3>
+                        <p class="animal-desc">Мощный, уверенный, лидерский голос</p>
+                    </div>
+                </div>
+                
+                <div class="animal-example" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+                    <div class="animal-card">
+                        <div class="animal-emoji">🐦</div>
+                        <h3 class="animal-title">Колибри</h3>
+                        <p class="animal-desc">Быстрый, энергичный, яркий</p>
+                    </div>
+                </div>
+                
+                <div class="animal-example" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="animal-card">
+                        <div class="animal-emoji">🦉</div>
+                        <h3 class="animal-title">Сова</h3>
+                        <p class="animal-desc">Мудрый, глубокий, вдумчивый</p>
+                    </div>
+                </div>
+                
+                <div class="animal-example" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+                    <div class="animal-card">
+                        <div class="animal-emoji">🐬</div>
+                        <h3 class="animal-title">Дельфин</h3>
+                        <p class="animal-desc">Дружелюбный, мелодичный</p>
+                    </div>
+                </div>
+                
+                <div class="animal-example" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                    <div class="animal-card">
+                        <div class="animal-emoji">🦅</div>
+                        <h3 class="animal-title">Орёл</h3>
+                        <p class="animal-desc">Командный, чёткий, целеустремлённый</p>
+                    </div>
+                </div>
+                
+                <div class="animal-example" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
+                    <div class="animal-card">
+                        <div class="animal-emoji">🐱</div>
+                        <h3 class="animal-title">Кошка</h3>
+                        <p class="animal-desc">Мягкий, обволакивающий, гипнотический</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Block 5: About School -->
+    <section class="about-school" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text" data-aos="fade-right" data-aos-duration="1000">
+                    <h2 class="about-title">Школа вокала Анастасии Порток</h2>
+                    <p class="about-subtitle">место, где голоса обретают силу</p>
+                    
+                    <div class="about-stats">
+                        <div class="about-stat">
+                            <div class="stat-number">8</div>
+                            <div class="stat-label">лет работы</div>
+                        </div>
+                        <div class="about-stat">
+                            <div class="stat-number">2000+</div>
+                            <div class="stat-label">учеников</div>
+                        </div>
+                    </div>
+                    
+                    <ul class="about-features">
+                        <li>Авторские методики для любого уровня</li>
+                        <li>Онлайн и офлайн форматы</li>
+                        <li>Специальные программы для бизнеса</li>
+                    </ul>
+                </div>
+                
+                <div class="about-image" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300">
+                    <div class="about-avatar">
+                        <div class="avatar-placeholder"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Block 6: Final CTA -->
+    <section class="final-test-cta" id="final-cta">
+        <div class="container">
+            <div class="final-cta__content" data-aos="fade-up" data-aos-duration="1000">
+                <h2 class="final-cta__title">Твой голос уникален. Время это узнать!</h2>
+                <p class="final-cta__subtitle">
+                    Тест займёт всего 2 минуты, а результат останется с тобой навсегда
+                </p>
+                
+                <button class="btn btn--primary btn--large btn--pulse" onclick="startTest()">
+                    Пройти тест бесплатно
+                </button>
+                
+                <div class="final-cta__trigger">
+                    <span class="trigger-icon">🔥</span>
+                    <span>Сегодня уже <span class="counter-number">47</span> человек узнали своё голосовое животное</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__logo">
+                    <span class="logo-text">Анастасия Порток</span>
+                    <span class="logo-subtitle">Школа вокала</span>
+                </div>
+                <div class="footer__links">
+                    <a href="index.html" class="footer__link">Главная</a>
+                    <a href="index.html#program" class="footer__link">Программа</a>
+                    <a href="index.html#pricing" class="footer__link">Тарифы</a>
+                    <a href="index.html#results" class="footer__link">Результаты</a>
+                </div>
+                <div class="footer__contacts">
+                    <a href="tel:+79001234567" class="footer__contact">+7 (900) 123-45-67</a>
+                    <a href="mailto:info@vokalschool.ru" class="footer__contact">info@vokalschool.ru</a>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2024 Школа вокала Анастасии Порток. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Elements -->
+    <div class="floating-whatsapp">
+        <a href="https://wa.me/79001234567" target="_blank">
+            <svg viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.893 3.386"/>
+            </svg>
+        </a>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/test.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

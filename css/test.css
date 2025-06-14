@@ -842,6 +842,17 @@
 .about-avatar {
     width: 250px;
     height: 250px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.about-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--primary-color);
+    box-shadow: 0 15px 30px rgba(159, 122, 234, 0.3);
 }
 
 /* Final Test CTA */
@@ -990,7 +1001,8 @@
 @media (max-width: 768px) {
     .test-hero {
         padding-top: 70px; /* Высота для мобильного header */
-        min-height: 80vh;
+        min-height: 50vh; /* Уменьшаем высоту для мобильных */
+        padding-bottom: 2rem;
     }
     
     .header {
@@ -1143,6 +1155,12 @@
     .counter {
         margin: 0 1rem;
     }
+    
+    /* Убираем огромную высоту test-section на мобильных */
+    .test-section {
+        min-height: auto; /* Убираем фиксированную высоту */
+        padding: 2rem 0; /* Уменьшаем отступы */
+    }
 }
 
 @media (max-width: 480px) {
@@ -1171,5 +1189,15 @@
     
     .test-content {
         padding: 1.5rem 0.5rem;
+    }
+    
+    /* Еще больше уменьшаем высоту на очень маленьких экранах */
+    .test-hero {
+        min-height: 40vh; /* Еще меньше для маленьких экранов */
+        padding-bottom: 1rem;
+    }
+    
+    .test-section {
+        padding: 1.5rem 0; /* Минимальные отступы */
     }
 } 

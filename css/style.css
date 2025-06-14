@@ -362,7 +362,7 @@ p {
     display: flex;
     gap: 3rem;
     margin-top: 3rem;
-    margin-bottom: 20px; /* Отступ 20px до линии снизу */
+    margin-bottom: 30px; /* Отступ 20px до линии снизу */
     grid-column: 1 / -1;
 }
 

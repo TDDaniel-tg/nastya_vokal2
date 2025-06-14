@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
     createVoiceWaves();
 });
 
-// Scroll Indicator
+// Scroll Indicator go fuck yourself
 function initializeScrollIndicator() {
     const scrollIndicator = document.createElement('div');
     scrollIndicator.className = 'scroll-indicator';

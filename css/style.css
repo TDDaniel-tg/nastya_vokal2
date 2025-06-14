@@ -362,6 +362,7 @@ p {
     display: flex;
     gap: 3rem;
     margin-top: 3rem;
+    margin-bottom: 20px; /* Отступ 20px до линии снизу */
     grid-column: 1 / -1;
 }
 
@@ -407,7 +408,7 @@ p {
 
 /* Problem Solution Section */
 .problem-solution {
-    padding: 6rem 0 8rem 0; /* Увеличиваем нижний отступ */
+    padding: 6rem 0 6rem 0;
     background: var(--bg-secondary);
 }
 

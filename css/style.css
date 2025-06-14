@@ -1110,68 +1110,13 @@ p {
     gap: 1rem;
 }
 
-/* Mobile Menu Styles - Always defined but hidden on desktop */
+/* Mobile Menu Styles - базовые стили, переопределяются в медиа-запросах */
 .nav__mobile-menu {
     display: none; /* Скрыто на десктопе */
-    position: fixed;
-    top: 80px;
-    left: 0;
-    right: 0;
-    background: rgba(26, 27, 35, 0.95);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border-color);
-    transform: translateY(-100%);
-    transition: transform 0.3s ease;
-    z-index: 999;
 }
 
-.nav__mobile-menu.active {
-    transform: translateY(0);
-}
-
-.nav__mobile-links {
-    display: flex;
-    flex-direction: column;
-    padding: 1rem 0;
-}
-
-.nav__mobile-links .nav__link {
-    padding: 1rem 2rem;
-    border-bottom: 1px solid var(--border-color);
-    text-align: center;
-    color: var(--text-secondary);
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s ease;
-}
-
-.nav__mobile-links .nav__link:hover {
-    color: var(--primary-color);
-}
-
-.nav__mobile-links .nav__link--special {
-    background: var(--gradient-primary);
-    color: white !important;
-    margin: 0.5rem 1rem;
-    border-radius: 25px;
-    border: none;
-}
-
-.nav__mobile-links .nav__link:last-child {
-    border-bottom: none;
-}
-
-/* Mobile Menu Burger Animation */
-.nav__burger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-}
-
-.nav__burger.active span:nth-child(2) {
-    opacity: 0;
-}
-
-.nav__burger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -6px);
+.nav__burger {
+    display: none; /* Скрыт на десктопе */
 }
 
 /* Prevent horizontal scroll */
@@ -1226,79 +1171,180 @@ pre, code {
     .nav__mobile-menu {
         display: none !important;
     }
+    
+    /* Показываем кнопку "Тест голоса" на десктопе */
+    .nav__links .nav__link--special {
+        display: inline-block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative !important;
+        left: auto !important;
+        width: auto !important;
+        height: auto !important;
+        overflow: visible !important;
+        pointer-events: auto !important;
+    }
 }
 
-/* Responsive Design - Mobile and Tablet */
+/* =================================
+   МОБИЛЬНЫЙ ХЕДЕР - НОВАЯ ВЕРСИЯ
+   ================================= */
 @media (max-width: 768px) {
     body {
-        padding-top: 70px; /* Высота для мобильного header */
+        padding-top: 70px; /* Отступ для фиксированного header */
     }
     
+    /* Header */
     .header {
-        background: rgba(26, 27, 35, 1) !important; /* Непрозрачный фон на мобильных */
-        min-height: 70px;
-        padding: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 70px;
+        background: rgba(26, 27, 35, 0.95);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border-color);
+        z-index: 1000;
     }
     
     .nav {
+        height: 100%;
         padding: 0;
-        height: 70px;
-        display: flex;
-        align-items: center;
-    }
-    
-    .container {
-        padding: 0 15px; /* Уменьшенные отступы */
     }
     
     .nav__content {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        width: 100%;
         height: 100%;
+        padding: 15px 20px; /* Увеличиваем вертикальный отступ */
+        box-sizing: border-box; /* Учитываем padding в высоте */
     }
     
+    /* Логотип слева */
     .nav__logo {
-        flex: 1;
-        text-align: left; /* Выравниваем логотип к левому краю */
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Центрируем по вертикали */
     }
     
     .logo-text {
-        font-size: 1.25rem; /* Уменьшенный размер для мобильных */
+        font-family: var(--font-primary);
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        line-height: 1.1;
     }
     
     .logo-subtitle {
-        font-size: 0.75rem; /* Уменьшенный размер для мобильных */
+        font-size: 0.7rem;
+        color: var(--text-accent);
+        margin-top: -2px;
     }
     
-    /* ВАЖНО: Скрываем десктопную навигацию на мобильных */
+    /* ПОЛНОСТЬЮ СКРЫВАЕМ ДЕСКТОПНУЮ НАВИГАЦИЮ */
     .nav__links {
-        display: none !important;
+        display: none;
     }
     
-    /* ВАЖНО: Показываем бургер на мобильных */
+    /* Бургер справа */
     .nav__burger {
-        display: flex !important;
-        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
         background: transparent;
         border: none;
-        padding: 8px;
-        margin-right: 5px;
+        cursor: pointer;
+        gap: 4px;
+        flex-shrink: 0; /* Не сжимается */
     }
     
     .nav__burger span {
-        background: var(--text-primary); /* Белые полоски */
-        width: 20px;
+        width: 24px;
         height: 2px;
+        background: var(--text-primary);
+        border-radius: 2px;
+        transition: all 0.3s ease;
     }
     
-    /* ВАЖНО: Делаем мобильное меню доступным на мобильных */
+    /* Анимация бургера */
+    .nav__burger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    
+    .nav__burger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .nav__burger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+    }
+    
+    /* Мобильное меню */
     .nav__mobile-menu {
-        display: block !important;
-        top: 70px; /* Учитываем высоту header */
+        display: block; /* Показываем на мобильных */
+        position: fixed;
+        top: -100vh; /* Полностью вне экрана */
+        left: 0;
+        right: 0;
+        background: var(--bg-primary);
+        border-bottom: 1px solid var(--border-color);
+        z-index: 999;
+        transition: top 0.3s ease, visibility 0.3s ease, opacity 0.3s ease;
+        visibility: hidden; /* Дополнительно скрываем */
+        opacity: 0; /* Делаем прозрачным */
     }
     
+    .nav__mobile-menu.active {
+        top: 70px; /* Появляется под хедером */
+        visibility: visible; /* Становится видимым */
+        opacity: 1; /* Становится непрозрачным */
+    }
+    
+    .nav__mobile-links {
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        gap: 0;
+    }
+    
+    .nav__mobile-links .nav__link {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-weight: 500;
+        padding: 15px 0;
+        border-bottom: 1px solid var(--border-color);
+        transition: color 0.3s ease;
+    }
+    
+    .nav__mobile-links .nav__link:hover {
+        color: var(--primary-color);
+    }
+    
+    .nav__mobile-links .nav__link:last-child {
+        border-bottom: none;
+    }
+    
+    /* Специальная кнопка "Тест голоса" в мобильном меню */
+    .nav__mobile-links .nav__link--special {
+        background: var(--gradient-primary);
+        color: white;
+        border-radius: 25px;
+        margin: 10px 0;
+        padding: 12px 20px;
+        text-align: center;
+        border-bottom: none;
+    }
+    
+    .nav__mobile-links .nav__link--special:hover {
+        color: white;
+        transform: translateY(-2px);
+    }
+    
+    /* Остальные стили для мобильной версии */
     .hero__content {
         grid-template-columns: 1fr;
         text-align: center;
@@ -1335,7 +1381,6 @@ pre, code {
         max-width: 100%;
     }
     
-    /* Убираем горизонтальный скролл */
     .hero__title {
         word-wrap: break-word;
         hyphens: auto;
@@ -1371,4 +1416,5 @@ pre, code {
     .final-cta__benefits {
         grid-template-columns: 1fr;
     }
-} 
+}
+

@@ -1,12 +1,12 @@
 /* Test Page Specific Styles */
 .test-page {
-    font-family: var(--font-test-body);
+    font-family: var(--font-secondary);
 }
 
 .test-page h1, 
 .test-page h2, 
 .test-page h3 {
-    font-family: var(--font-test);
+    font-family: var(--font-primary);
 }
 
 /* Test Hero Section */
@@ -960,16 +960,16 @@
 }
 
 /* Mobile Menu Burger Animation */
-.nav__burger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
+.test-page .nav__burger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px) !important;
 }
 
-.nav__burger.active span:nth-child(2) {
-    opacity: 0;
+.test-page .nav__burger.active span:nth-child(2) {
+    opacity: 0 !important;
 }
 
-.nav__burger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -6px);
+.test-page .nav__burger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px) !important;
 }
 
 /* Desktop styles для страницы теста */
@@ -1010,50 +1010,77 @@
         padding: 0 15px !important; /* Уменьшенные отступы */
     }
     
-    .nav__content {
+    .test-page .nav__content {
         display: flex !important;
         justify-content: space-between !important;
         align-items: center !important;
         width: 100% !important;
         height: 100% !important;
+        position: relative !important;
     }
     
-    .nav__logo {
+    .test-page .nav__logo {
         flex: 1 !important;
         text-align: left !important; /* Выравниваем логотип к левому краю */
+        display: flex !important;
+        flex-direction: column !important;
     }
     
-    .logo-text {
+    .test-page .logo-text {
         font-size: 1.25rem !important; /* Уменьшенный размер для мобильных */
+        color: var(--text-primary) !important;
+        font-weight: 700 !important;
+        line-height: 1.1 !important;
     }
     
-    .logo-subtitle {
+    .test-page .logo-subtitle {
         font-size: 0.75rem !important; /* Уменьшенный размер для мобильных */
+        color: var(--text-accent) !important;
+        margin-top: -0.25rem !important;
     }
     
-    /* ВАЖНО: Mobile navigation */
-    .nav__links {
+    /* ВАЖНО: Mobile navigation - убираем десктопную навигацию */
+    .test-page .nav__links {
         display: none !important; /* Скрываем обычную навигацию на мобильных */
+        visibility: hidden !important;
     }
     
-    .nav__burger {
+    /* ВАЖНО: Mobile burger - показываем только бургер и логотип */
+    .test-page .nav__burger {
         display: flex !important; /* Показываем бургер на мобильных */
         position: relative !important;
         background: transparent !important;
         border: none !important;
         padding: 8px !important;
         margin-right: 5px !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 4px !important;
     }
     
-    .nav__burger span {
+    .test-page .nav__burger span {
         background: var(--text-primary) !important; /* Белые полоски */
         width: 20px !important;
         height: 2px !important;
+        border-radius: 2px !important;
+        transition: all 0.3s ease !important;
     }
     
-    .nav__mobile-menu {
+    .test-page .nav__mobile-menu {
         display: block !important; /* Показываем мобильное меню только на мобильных */
         top: 70px !important; /* Учитываем высоту header */
+        position: fixed !important;
+        left: 0 !important;
+        right: 0 !important;
+        background: var(--bg-primary) !important;
+        z-index: 999 !important;
+        transform: translateY(-100%) !important;
+        transition: transform 0.3s ease !important;
+    }
+    
+    .test-page .nav__mobile-menu.active {
+        transform: translateY(0) !important;
     }
     
     .steps {

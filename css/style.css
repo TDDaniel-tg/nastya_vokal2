@@ -490,10 +490,12 @@ p {
 .result-item {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     padding: 1rem;
     background: var(--bg-primary);
     border-radius: 10px;
+    gap: 1rem;
+    min-height: 60px;
 }
 
 .result-label {
@@ -1398,6 +1400,24 @@ pre, code {
     .testimonial {
         max-width: 100%;
     }
+    
+    /* Улучшение карточек результатов на планшетах */
+    .result-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.7rem;
+        padding: 1.3rem;
+    }
+    
+    .result-label {
+        font-size: 1rem;
+        margin-bottom: 0.4rem;
+    }
+    
+    .result-value {
+        font-size: 1rem;
+        line-height: 1.4;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1415,6 +1435,39 @@ pre, code {
     
     .final-cta__benefits {
         grid-template-columns: 1fr;
+    }
+    
+    /* Исправление карточек результатов на мобильных */
+    .result-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        min-height: auto;
+        padding: 1.2rem;
+    }
+    
+    .result-label {
+        font-size: 0.9rem;
+        margin-bottom: 0.3rem;
+        font-weight: 600;
+    }
+    
+    .result-value {
+        font-size: 0.95rem;
+        line-height: 1.4;
+        word-wrap: break-word;
+    }
+    
+    .case-study {
+        padding: 1.5rem;
+        margin: 0 10px;
+    }
+    
+    .case-study h4 {
+        font-size: 1.1rem;
+        line-height: 1.3;
+        margin-bottom: 1.2rem;
+        word-wrap: break-word;
     }
 }
 
